@@ -24,6 +24,7 @@ const cleanArray = (value) =>
     .map(String)
     .map((item) => item.trim())
     .filter(Boolean);
+
 const payload = (body) => ({
   title: String(body.title || "").trim(),
   ingredients: cleanArray(body.ingredients),
