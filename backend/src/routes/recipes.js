@@ -160,6 +160,16 @@ router.put("/:id", upload.single("image"), async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findByIdAndDelete(req.params.id);
+    if (!recipe) return res.status(404).json({ message: "Recipe not found." });
+    res.json({ message: "Recipe deleted." });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/:id/like", async (req, res, next) => {
   try {
     const user = String(req.body.user || "guest").trim();

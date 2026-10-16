@@ -14,6 +14,8 @@ export const createRecipe = (form) =>
   request("/recipes", { method: "POST", body: form });
 export const updateRecipe = (id, form) =>
   request(`/recipes/${id}`, { method: "PUT", body: form });
+export const deleteRecipe = (id) =>
+  request(`/recipes/${id}`, { method: "DELETE" });
 export const toggleLike = (id, user) =>
   request(`/recipes/${id}/like`, {
     method: "POST",
